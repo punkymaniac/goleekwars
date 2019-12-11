@@ -5,7 +5,7 @@ import (
     "encoding/json"
 )
 
-type AiService struct {
+type aiService struct {
     apiService
 }
 
@@ -55,7 +55,7 @@ type aiElem struct {
 }
 
 // Get a AI
-func (s *AiService) Get(
+func (s *aiService) Get(
     aiId uint64, // AI id
 ) (*aiElem, error) {
     data := "ai_id=" + strconv.FormatUint(aiId, 10)
@@ -78,7 +78,7 @@ func (s *AiService) Get(
 }
 
 // Get all farmer AI
-func (s *AiService) GetFarmerAis(
+func (s *aiService) GetFarmerAis(
 ) (*Ais, error) {
     data := ""
     resp, body, err := s.apiRequest("POST", s.url + "get-farmer-ais/", &data)
@@ -100,7 +100,7 @@ func (s *AiService) GetFarmerAis(
 }
 
 // Create a new AI
-func (s *AiService) New(
+func (s *aiService) New(
     folderId uint64, // Folder id where to create the AI
     v2 bool, // Id true, create a V2 AI
 ) (*aiInfo, error) {
@@ -124,7 +124,7 @@ func (s *AiService) New(
 }
 
 // Rename a AI
-func (s *AiService) Rename(
+func (s *aiService) Rename(
     aiId uint64, // AI id
     name string, // The new name of the AI
 ) (error) {
@@ -142,7 +142,7 @@ func (s *AiService) Rename(
 }
 
 // Save a code on the AI
-func (s *AiService) Save(
+func (s *aiService) Save(
     aiId uint64, // AI id
     code string, // Code to save in the AI
 ) (error) {

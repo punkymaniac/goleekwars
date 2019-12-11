@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 )
 
-type AiFolderService struct {
+type aiFolderService struct {
 	apiService
 }
 
@@ -14,7 +14,7 @@ type id struct {
 }
 
 // Change a AI folder location
-func (s *AiFolderService) ChangeFolder(
+func (s *aiFolderService) ChangeFolder(
     folderId uint64, // Folder id to move
     dstFolderId uint64, // Folder id to move the folder in
 ) (error) {
@@ -32,7 +32,7 @@ func (s *AiFolderService) ChangeFolder(
 }
 
 // Delete a AI folder
-func (s *AiFolderService) Delete(
+func (s *aiFolderService) Delete(
     folderId uint64, // Folder id to delete
 ) (error) {
     data := "folder_id=" + strconv.FormatUint(folderId, 10)
@@ -49,7 +49,7 @@ func (s *AiFolderService) Delete(
 }
 
 // Create a AI folder
-func (s *AiFolderService) New(
+func (s *aiFolderService) New(
     folderId uint64, // Parent folder id
 ) (uint64, error) {
     data := "folder_id=" + strconv.FormatUint(folderId, 10)
@@ -72,7 +72,7 @@ func (s *AiFolderService) New(
 }
 
 // Rename a AI folder
-func (s *AiFolderService) Rename(
+func (s *aiFolderService) Rename(
     folderId uint64, // Folder id to rename
     name string, // The new name of the folder
 ) (error) {

@@ -10,9 +10,9 @@ import (
 type ApiLeek struct {
     url string
     client *leekClient
-    Ai AiService
-    AiFolder AiFolderService
-    Farmer FarmerService
+    Ai aiService
+    AiFolder aiFolderService
+    Farmer farmerService
 }
 
 type apiService struct {
@@ -35,9 +35,9 @@ func NewApi() ApiLeek {
     api := ApiLeek{
                 url: apiUrl,
                 client: &leekCli,
-                Ai: AiService{apiService{client: &leekCli, url: apiUrl + "ai/"}},
-                AiFolder: AiFolderService{apiService{client: &leekCli, url: apiUrl + "ai-folder/"}},
-                Farmer: FarmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
+                Ai: aiService{apiService{client: &leekCli, url: apiUrl + "ai/"}},
+                AiFolder: aiFolderService{apiService{client: &leekCli, url: apiUrl + "ai-folder/"}},
+                Farmer: farmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
            }
     return api
 }

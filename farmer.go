@@ -4,7 +4,7 @@ import (
     "encoding/json"
 )
 
-type FarmerService struct {
+type farmerService struct {
     apiService
 }
 
@@ -116,7 +116,7 @@ type hat struct {
 }
 
 // Get a auth token from the api
-func (s *FarmerService) LoginToken(
+func (s *farmerService) LoginToken(
     username string, // Username of the account
     password string, // Password of the account
 ) (*LoginFarmer, error) {
