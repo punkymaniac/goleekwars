@@ -18,7 +18,7 @@ func (s *AiFolderService) ChangeFolder(
     folderId uint64, // Folder id to move
     dstFolderId uint64, // Folder id to move the folder in
 ) (error) {
-    data := "folder_id=" + strconv.FormatUint(folderId, 10)
+    data := "folder_id=" + strconv.FormatUint(folderId, 10) + "&dest_folder_id=" + strconv.FormatUint(dstFolderId, 10)
     resp, body, err := s.apiRequest("POST", s.url + "change_folder/", &data)
     if err != nil {
         return err
