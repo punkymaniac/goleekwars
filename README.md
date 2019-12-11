@@ -34,18 +34,18 @@ aiFolders := ais.Folders
 Current Api call implemented:
 * [ ] /ai/change-folder/
 * [ ] /ai/delete/
-* [ ] /ai/get/
-* [ ] /ai/get-farmer-ais/
-* [ ] /ai/new/
-* [ ] /ai/rename/
-* [ ] /ai/save/
+* [X] /ai/get/
+* [X] /ai/get-farmer-ais/
+* [X] /ai/new/
+* [X] /ai/rename/
+* [X] /ai/save/
 * [ ] /ai/test/
 * [ ] /ai/test-new/
 * [ ] /ai/test-v2/
-* [ ] /ai-folder/change-folder/
-* [ ] /ai-folder/delete/
-* [ ] /ai-folder/new/
-* [ ] /ai-folder/rename
+* [X] /ai-folder/change-folder/
+* [X] /ai-folder/delete/
+* [X] /ai-folder/new/
+* [X] /ai-folder/rename
 * [ ] /changelog/get/
 * [ ] /changelog/get-last/
 * [ ] /chip/get-all/
@@ -64,7 +64,7 @@ Current Api call implemented:
 * [ ] /farmer/get-connected/
 * [ ] /farmer/get-from-token/
 * [ ] /farmer/login/
-* [ ] /farmer/login-token/
+* [X] /farmer/login-token/
 * [ ] /farmer/register/
 * [ ] /farmer/register-tournament/
 * [ ] /farmer/rich-tooltip/
