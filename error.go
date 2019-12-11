@@ -38,10 +38,14 @@ func newApiError(
 ) error {
     var obj bodyError
 
-    err := json.Unmarshal([]byte(body), &obj)
-    if err != nil {
-        log.Printf("Error to unmarshall body error: %s\nError:\n%v\n", body, err)
-        return err
+    if body == "[]" {
+        obj = bodyError{Error: ""}
+    } else {
+        err := json.Unmarshal([]byte(body), &obj)
+        if err != nil {
+            log.Printf("Error to unmarshall body error: %s\nError:\n%v\n", body, err)
+            return err
+        }
     }
     pc, _, _, _ := runtime.Caller(1)
     f := runtime.FuncForPC(pc)
