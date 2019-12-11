@@ -7,6 +7,28 @@ goleekwars is a Go client library for accessing the [leekwars API](https://leekw
 go get github.com/punkymaniac/goleekwars
 ```
 
+## Quick start
+```go
+import "github.com/punkymaniac/goleekwars"
+
+apileek := apileekwars.NewApi()
+err := api.Auth("username", "password")
+if err != nil {
+    panic(err)
+}
+
+// Get all ais's farmer
+ais, err := api.Ai.GetFarmerAis()
+if err != nil {
+    panic(err)
+}
+
+aiFiles := ais.Ais
+aiFolders := ais.Folders
+
+// ...
+
+```
 
 ## Notes
 Current Api call implemented:
