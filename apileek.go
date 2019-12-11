@@ -11,6 +11,7 @@ type ApiLeek struct {
     url string
     client *leekClient
     Ai AiService
+    AiFolder AiFolderService
     Farmer FarmerService
 }
 
@@ -35,6 +36,7 @@ func NewApi() ApiLeek {
                 url: apiUrl,
                 client: &leekCli,
                 Ai: AiService{apiService{client: &leekCli, url: apiUrl + "ai/"}},
+                AiFolder: AiFolderService{apiService{client: &leekCli, url: apiUrl + "ai-folder/"}},
                 Farmer: FarmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
            }
     return api
