@@ -8,7 +8,6 @@ import (
 )
 
 type ApiLeek struct {
-    url string
     client *leekClient
     Ai aiService
     AiFolder aiFolderService
@@ -33,7 +32,6 @@ func NewApi() ApiLeek {
                    token: nil,
                }
     api := ApiLeek{
-                url: apiUrl,
                 client: &leekCli,
                 Ai: aiService{apiService{client: &leekCli, url: apiUrl + "ai/"}},
                 AiFolder: aiFolderService{apiService{client: &leekCli, url: apiUrl + "ai-folder/"}},
