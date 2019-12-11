@@ -11,6 +11,7 @@ type ApiLeek struct {
     url string
     client *leekClient
     Ai AiService
+    Farmer FarmerService
 }
 
 type apiService struct {
@@ -34,6 +35,7 @@ func NewApi() ApiLeek {
                 url: apiUrl,
                 client: &leekCli,
                 Ai: AiService{apiService{client: &leekCli, url: apiUrl + "ai/"}},
+                Farmer: FarmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
            }
     return api
 }
@@ -83,5 +85,22 @@ func (c *leekClient) SetToken(
     token string, // Token used to auth with the api
 ) {
     c.token = &token
+}
+
+// Auth to the api
+func (l *ApiLeek) Auth(
+    username string, // Username of the account
+    password string, // Password of the account
+) (*farmerInfo, error) {
+    farmer, err := l.Farmer.LoginToken(username, password)
+    if err != nil {
+        return nil, err
+    }
+
+    if (farmer != nil) {
+        l.client.SetToken(farmer.Token)
+        return &farmer.Farmer, nil
+    }
+    return nil, newError("Nil token received")
 }
 
