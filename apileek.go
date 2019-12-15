@@ -8,14 +8,19 @@ import (
 )
 
 type ApiLeek struct {
-    client *leekClient
+    client apiClient
     Ai aiService
     AiFolder aiFolderService
     Farmer farmerService
 }
 
+type apiClient interface {
+    ApiRequest(string, string, *string) (*http.Response, string, error)
+    SetToken(string)
+}
+
 type apiService struct {
-    client *leekClient
+    client apiClient
     url string
 }
 
@@ -40,8 +45,17 @@ func NewApi() ApiLeek {
     return api
 }
 
-
+// Made a API request over the apiClient
 func (c *apiService) apiRequest(
+    method string, // HTTP method od the request
+    uri string, // Uri of the request
+    data *string, // If not nil, string of the post data
+) (*http.Response, string, error) {
+    return c.client.ApiRequest(method, uri, data)
+}
+
+// Made a request to the API
+func (c *leekClient) ApiRequest(
     method string, // HTTP method od the request
     uri string, // Uri of the request
     data *string, // If not nil, string of the post data
@@ -63,11 +77,11 @@ func (c *apiService) apiRequest(
     }
 
     // Use auth token
-    if c.client.token != nil {
-        req.Header.Set("Authorization", "Bearer " + *c.client.token)
+    if c.token != nil {
+        req.Header.Set("Authorization", "Bearer " + *c.token)
     }
 
-    resp, err := c.client.httpcli.Do(req)
+    resp, err := c.httpcli.Do(req)
     if err != nil {
         return nil, "", err
     }
