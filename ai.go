@@ -54,6 +54,41 @@ type aiElem struct {
     Owner uint64 `json:"owner"`
 }
 
+// Change the folder of the AI
+func (s *aiService) ChangeFolder(
+    aiId uint64, // AI id
+    folderId uint64, // Folder id to move the AI
+) error {
+    data := "ai_id=" + strconv.FormatUint(aiId, 10) + "&folder_id=" + strconv.FormatUint(folderId, 10)
+    resp, body, err := s.apiRequest("POST", s.url + "change-folder/", &data)
+    if err != nil {
+        return err
+    }
+
+    if resp.StatusCode != 200 {
+        return newApiError(resp, body)
+    }
+
+    return nil
+}
+
+// Delete a AI
+func (s *aiService) Delete(
+    aiId uint64, // Ai id
+) error {
+    data := "ai_id=" + strconv.FormatUint(aiId, 10)
+    resp, body, err := s.apiRequest("POST", s.url + "delete/", &data)
+    if err != nil {
+        return err
+    }
+
+    if resp.StatusCode != 200 {
+        return newApiError(resp, body)
+    }
+
+    return nil
+}
+
 // Get a AI
 func (s *aiService) Get(
     aiId uint64, // AI id
@@ -157,5 +192,35 @@ func (s *aiService) Save(
     }
 
     return nil
+}
+
+// Test the ai
+// TODO Incomplete, missing documentation
+// Always return a error
+func (s *aiService) Test(
+    aiId uint64, // AI id
+    leekId uint64, // Leek id
+    bots []string, // Bots
+    Type string, // TODO Missing documentation
+) (error) {
+    return newError("Api not implemented: Missing documentation")
+}
+
+//
+// TODO Incomplete, missing documentation
+// Always return a error
+func (s *aiService) TestNew(
+    jsonData string, // TODO Missing documentation
+) (error) {
+    return newError("Api not implemented: Missing documentation")
+}
+
+//
+// TODO Incomplete, missing documentation
+// Always return a error
+func (s *aiService) TestV2(
+    jsonData string, // TODO Missing documentation
+) (error) {
+    return newError("Api not implemented: Missing documentation")
 }
 
