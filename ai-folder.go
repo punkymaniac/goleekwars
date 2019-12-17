@@ -17,7 +17,7 @@ type id struct {
 func (s *aiFolderService) ChangeFolder(
     folderId uint, // Folder id to move
     dstFolderId uint, // Folder id to move the folder in
-) (error) {
+) error {
     data := "folder_id=" + strconv.FormatUint(uint64(folderId), 10) + "&dest_folder_id=" + strconv.FormatUint(uint64(dstFolderId), 10)
     resp, body, err := s.apiRequest("POST", s.url + "change_folder/", &data)
     if err != nil {
@@ -34,7 +34,7 @@ func (s *aiFolderService) ChangeFolder(
 // Delete a AI folder
 func (s *aiFolderService) Delete(
     folderId uint, // Folder id to delete
-) (error) {
+) error {
     data := "folder_id=" + strconv.FormatUint(uint64(folderId), 10)
     resp, body, err := s.apiRequest("POST", s.url + "delete/", &data)
     if err != nil {
@@ -75,7 +75,7 @@ func (s *aiFolderService) New(
 func (s *aiFolderService) Rename(
     folderId uint, // Folder id to rename
     name string, // The new name of the folder
-) (error) {
+) error {
     data := "folder_id=" + strconv.FormatUint(uint64(folderId), 10) + "&new_name=" + name
     resp, body, err := s.apiRequest("POST", s.url + "rename/", &data)
     if err != nil {

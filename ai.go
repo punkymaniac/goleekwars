@@ -162,7 +162,7 @@ func (s *aiService) New(
 func (s *aiService) Rename(
     aiId uint, // AI id
     name string, // The new name of the AI
-) (error) {
+) error {
     data := "ai_id=" + strconv.FormatUint(uint64(aiId), 10) + "&new_name=" + name
     resp, body, err := s.apiRequest("POST", s.url + "rename/", &data)
     if err != nil {
@@ -180,7 +180,7 @@ func (s *aiService) Rename(
 func (s *aiService) Save(
     aiId uint, // AI id
     code string, // Code to save in the AI
-) (error) {
+) error {
     data := "ai_id=" + strconv.FormatUint(uint64(aiId), 10) + "&code=" + code
     resp, body, err := s.apiRequest("POST", s.url + "save/", &data)
     if err != nil {
@@ -202,7 +202,7 @@ func (s *aiService) Test(
     leekId uint, // Leek id
     bots []string, // Bots
     Type string, // TODO Missing documentation
-) (error) {
+) error {
     return newError("Api not implemented: Missing documentation")
 }
 
@@ -211,7 +211,7 @@ func (s *aiService) Test(
 // Always return a error
 func (s *aiService) TestNew(
     jsonData string, // TODO Missing documentation
-) (error) {
+) error {
     return newError("Api not implemented: Missing documentation")
 }
 
@@ -220,7 +220,7 @@ func (s *aiService) TestNew(
 // Always return a error
 func (s *aiService) TestV2(
     jsonData string, // TODO Missing documentation
-) (error) {
+) error {
     return newError("Api not implemented: Missing documentation")
 }
 
