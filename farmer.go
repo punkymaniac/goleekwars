@@ -20,17 +20,17 @@ type farmer struct {
 }
 
 type farmerInfo struct {
-    Id uint64 `json:"id"`
+    Id uint `json:"id"`
     Login string `json:"login"`
     Team team `json:"team"`
     Name string `json:"name"`
-    Talent uint64 `json:"talent"`
-    Leeks map[uint64]leek `json:"leeks"`
+    Talent uint `json:"talent"`
+    Leeks map[uint]leek `json:"leeks"`
     AvatarChanged timestamp `json:"avatar_changed"`
-    TalentMore uint64 `json:"talent_more"`
-    Victories uint64 `json:"victories"`
-    Draws uint64 `json:"draws"`
-    Defeats uint64 `json:"defeats"`
+    TalentMore uint `json:"talent_more"`
+    Victories uint `json:"victories"`
+    Draws uint `json:"draws"`
+    Defeats uint `json:"defeats"`
     Ratio string `json:"ratio"`
     Connected bool `json:"connected"`
     LastConnection timestamp `json:"last_connection"`
@@ -43,22 +43,22 @@ type farmerInfo struct {
     Godfather json.RawMessage `json:"godfather"` // missing information
     Godsons json.RawMessage `json:"godsons"` // missing information
     Color string `json:"color"`
-    Banned uint64 `json:"banned"`
-    WonSoloTournaments uint64 `json:"won_solo_tournaments"`
-    WonFarmerTournaments uint64 `json:"won_farmer_tournaments"`
-    WonTeamTournaments uint64 `json:"won_team_tournaments"`
-    TotalLevel uint64 `json:"total_level"`
-    LeekCount uint64 `json:"leek_count"`
-    InGarden uint64 `json:"in_garden"`
-    Fights uint64 `json:"fights"`
+    Banned uint `json:"banned"`
+    WonSoloTournaments uint `json:"won_solo_tournaments"`
+    WonFarmerTournaments uint `json:"won_farmer_tournaments"`
+    WonTeamTournaments uint `json:"won_team_tournaments"`
+    TotalLevel uint `json:"total_level"`
+    LeekCount uint `json:"leek_count"`
+    InGarden uint `json:"in_garden"`
+    Fights uint `json:"fights"`
     Github json.RawMessage `json:"github"` // missing information
     Website json.RawMessage `json:"website"` // missing information
-    ForumMessages uint64 `json:"forum_messages"`
-    DidacticielSeen uint64 `json:"didacticiel_seen"`
+    ForumMessages uint `json:"forum_messages"`
+    DidacticielSeen uint `json:"didacticiel_seen"`
     Contributor bool `json:"contributor"`
-    Trophies uint64 `json:"trophies"`
-    Habs uint64 `json:"habs"`
-    Crystals uint64 `json:"crystals"`
+    Trophies uint `json:"trophies"`
+    Habs uint `json:"habs"`
+    Crystals uint `json:"crystals"`
     Weapons []weapon `json:"weapons"`
     Chips []chip `json:"chips"`
     Ais []aiBase `json:"ais"`
@@ -69,19 +69,19 @@ type farmerInfo struct {
 }
 
 type weapon struct {
-    Id uint64 `json:"id"`
-    Template uint64 `json:"template"`
+    Id uint `json:"id"`
+    Template uint `json:"template"`
 }
 
 type chip struct {
-    Id uint64 `json:"id"`
-    Template uint64 `json:"template"`
+    Id uint `json:"id"`
+    Template uint `json:"template"`
 }
 
 type potion struct {
-    Id uint64 `json:"id"`
-    Template uint64 `json:"template"`
-    Quantity uint64 `json:"quantity"`
+    Id uint `json:"id"`
+    Template uint `json:"template"`
+    Quantity uint `json:"quantity"`
 }
 
 type tournament struct {
@@ -90,29 +90,29 @@ type tournament struct {
 }
 
 type team struct {
-    Id uint64 `json:"id"`
+    Id uint `json:"id"`
     Name string `json:"name"`
-    Level uint64 `json:"level"`
+    Level uint `json:"level"`
     EmblemChanged timestamp `json:"emblem_changed"`
 }
 
 type leek struct {
-    Id uint64 `json:"id"`
+    Id uint `json:"id"`
     Name string `json:"name"`
     Color string `json:"color"`
-    Capital uint64 `json:"capital"`
-    Level uint64 `json:"level"`
-    Talent uint64 `json:"talent"`
-    Skin uint64 `json:"skin"`
-    Hat *uint64 `json:"Hat"`
+    Capital uint `json:"capital"`
+    Level uint `json:"level"`
+    Talent uint `json:"talent"`
+    Skin uint `json:"skin"`
+    Hat *uint `json:"Hat"`
 }
 
 type hat struct {
-    Id uint64 `json:"id"`
-    Template uint64 `json:"template"`
-    Level uint64 `json:"level"`
+    Id uint `json:"id"`
+    Template uint `json:"template"`
+    Level uint `json:"level"`
     Name string `json:"name"`
-    HatTemplate uint64 `json:"hat_template"`
+    HatTemplate uint `json:"hat_template"`
 }
 
 // Get a auth token from the api

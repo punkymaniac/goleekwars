@@ -10,15 +10,15 @@ type aiService struct {
 }
 
 type Folder struct {
-    Id uint64 `json:"id"`
+    Id uint `json:"id"`
     Name string `json:"name"`
-    Folder uint64 `json:"folder"`
+    Folder uint `json:"folder"`
 }
 
 type Ais struct {
     Ais []aiAllInfo `json:"ais"`
     Folders []Folder `json:"folders"`
-    LeekAis map[uint64]uint64 `json:"leek_ais"`
+    LeekAis map[uint]uint `json:"leek_ais"`
 }
 
 type ai struct {
@@ -26,21 +26,21 @@ type ai struct {
 }
 
 type aiBase struct {
-    Id uint64 `json:"id"`
+    Id uint `json:"id"`
     Name string `json:"name"`
-    Level uint64 `json:"level"`
+    Level uint `json:"level"`
 }
 
 type aiInfo struct {
     aiBase
     Code string `json:"code"`
-    Folder uint64 `json:"folder"`
+    Folder uint `json:"folder"`
 }
 
 type aiAllInfo struct {
     aiInfo
     Valid bool `json:"valid"`
-    V2 uint64 `json:"v2"`
+    V2 uint `json:"v2"`
 }
 
 type aiList struct {
@@ -51,15 +51,15 @@ type aiElem struct {
     aiBase
     Code string `json:"code"`
     Valid bool `json:"valid"`
-    Owner uint64 `json:"owner"`
+    Owner uint `json:"owner"`
 }
 
 // Change the folder of the AI
 func (s *aiService) ChangeFolder(
-    aiId uint64, // AI id
-    folderId uint64, // Folder id to move the AI
+    aiId uint, // AI id
+    folderId uint, // Folder id to move the AI
 ) error {
-    data := "ai_id=" + strconv.FormatUint(aiId, 10) + "&folder_id=" + strconv.FormatUint(folderId, 10)
+    data := "ai_id=" + strconv.FormatUint(uint64(aiId), 10) + "&folder_id=" + strconv.FormatUint(uint64(folderId), 10)
     resp, body, err := s.apiRequest("POST", s.url + "change-folder/", &data)
     if err != nil {
         return err
@@ -74,9 +74,9 @@ func (s *aiService) ChangeFolder(
 
 // Delete a AI
 func (s *aiService) Delete(
-    aiId uint64, // Ai id
+    aiId uint, // Ai id
 ) error {
-    data := "ai_id=" + strconv.FormatUint(aiId, 10)
+    data := "ai_id=" + strconv.FormatUint(uint64(aiId), 10)
     resp, body, err := s.apiRequest("POST", s.url + "delete/", &data)
     if err != nil {
         return err
@@ -91,9 +91,9 @@ func (s *aiService) Delete(
 
 // Get a AI
 func (s *aiService) Get(
-    aiId uint64, // AI id
+    aiId uint, // AI id
 ) (*aiElem, error) {
-    data := "ai_id=" + strconv.FormatUint(aiId, 10)
+    data := "ai_id=" + strconv.FormatUint(uint64(aiId), 10)
     resp, body, err := s.apiRequest("POST", s.url + "get/", &data)
     if err != nil {
         return nil, err
@@ -136,10 +136,10 @@ func (s *aiService) GetFarmerAis(
 
 // Create a new AI
 func (s *aiService) New(
-    folderId uint64, // Folder id where to create the AI
+    folderId uint, // Folder id where to create the AI
     v2 bool, // Id true, create a V2 AI
 ) (*aiInfo, error) {
-    data := "folder_id=" + strconv.FormatUint(folderId, 10) + "&v2=" + strconv.FormatBool(v2)
+    data := "folder_id=" + strconv.FormatUint(uint64(folderId), 10) + "&v2=" + strconv.FormatBool(v2)
     resp, body, err := s.apiRequest("POST", s.url + "new/", &data)
     if err != nil {
         return nil, err
@@ -160,10 +160,10 @@ func (s *aiService) New(
 
 // Rename a AI
 func (s *aiService) Rename(
-    aiId uint64, // AI id
+    aiId uint, // AI id
     name string, // The new name of the AI
 ) (error) {
-    data := "ai_id=" + strconv.FormatUint(aiId, 10) + "&new_name=" + name
+    data := "ai_id=" + strconv.FormatUint(uint64(aiId), 10) + "&new_name=" + name
     resp, body, err := s.apiRequest("POST", s.url + "rename/", &data)
     if err != nil {
         return err
@@ -178,10 +178,10 @@ func (s *aiService) Rename(
 
 // Save a code on the AI
 func (s *aiService) Save(
-    aiId uint64, // AI id
+    aiId uint, // AI id
     code string, // Code to save in the AI
 ) (error) {
-    data := "ai_id=" + strconv.FormatUint(aiId, 10) + "&code=" + code
+    data := "ai_id=" + strconv.FormatUint(uint64(aiId), 10) + "&code=" + code
     resp, body, err := s.apiRequest("POST", s.url + "save/", &data)
     if err != nil {
         return err
@@ -198,8 +198,8 @@ func (s *aiService) Save(
 // TODO Incomplete, missing documentation
 // Always return a error
 func (s *aiService) Test(
-    aiId uint64, // AI id
-    leekId uint64, // Leek id
+    aiId uint, // AI id
+    leekId uint, // Leek id
     bots []string, // Bots
     Type string, // TODO Missing documentation
 ) (error) {
