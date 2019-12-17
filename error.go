@@ -49,6 +49,7 @@ func newApiError(
     }
     pc, _, _, _ := runtime.Caller(1)
     f := runtime.FuncForPC(pc)
+
     return &apiError{
                 ApiError: obj.Error,
                 StatusCode: resp.StatusCode,

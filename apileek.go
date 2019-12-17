@@ -42,6 +42,7 @@ func NewApi() ApiLeek {
                 AiFolder: aiFolderService{apiService{client: &leekCli, url: apiUrl + "ai-folder/"}},
                 Farmer: farmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
            }
+
     return api
 }
 
@@ -91,6 +92,7 @@ func (c *leekClient) ApiRequest(
     if err != nil {
         return nil, "", err
     }
+
     return resp, string(raw), nil
 }
 
@@ -115,6 +117,7 @@ func (l *ApiLeek) Auth(
         l.client.SetToken(farmer.Token)
         return &farmer.Farmer, nil
     }
+
     return nil, newError("Nil token received")
 }
 
