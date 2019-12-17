@@ -13,6 +13,7 @@ type ApiLeek struct {
     AiFolder aiFolderService
     Changelog changelogService
     Constant constantService
+    Country countryService
     Farmer farmerService
 }
 
@@ -44,6 +45,7 @@ func NewApi() ApiLeek {
                 AiFolder: aiFolderService{apiService{client: &leekCli, url: apiUrl + "ai-folder/"}},
                 Changelog: changelogService{apiService{client: &leekCli, url: apiUrl + "changelog/"}},
                 Constant: constantService{apiService{client: &leekCli, url: apiUrl + "constant/"}},
+                Country: countryService{apiService{client: &leekCli, url: apiUrl + "country/"}},
                 Farmer: farmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
            }
 
