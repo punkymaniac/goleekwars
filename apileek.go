@@ -16,6 +16,7 @@ type ApiLeek struct {
     Constant constantService
     Country countryService
     Farmer farmerService
+    Fight fightService
     Weapon weaponService
 }
 
@@ -50,6 +51,7 @@ func NewApi() ApiLeek {
                 Constant: constantService{apiService{client: &leekCli, url: apiUrl + "constant/"}},
                 Country: countryService{apiService{client: &leekCli, url: apiUrl + "country/"}},
                 Farmer: farmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
+                Fight: fightService{apiService{client: &leekCli, url: apiUrl + "fight/"}},
                 Weapon: weaponService{apiService{client: &leekCli, url: apiUrl + "weapon/"}},
            }
 
