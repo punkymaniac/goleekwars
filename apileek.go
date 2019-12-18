@@ -17,6 +17,7 @@ type ApiLeek struct {
     Country countryService
     Farmer farmerService
     Fight fightService
+    Forum forumService
     Weapon weaponService
 }
 
@@ -52,6 +53,7 @@ func NewApi() ApiLeek {
                 Country: countryService{apiService{client: &leekCli, url: apiUrl + "country/"}},
                 Farmer: farmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
                 Fight: fightService{apiService{client: &leekCli, url: apiUrl + "fight/"}},
+                Forum: forumService{apiService{client: &leekCli, url: apiUrl + "forum/"}},
                 Weapon: weaponService{apiService{client: &leekCli, url: apiUrl + "weapon/"}},
            }
 
