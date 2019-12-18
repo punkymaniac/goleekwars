@@ -18,6 +18,8 @@ type ApiLeek struct {
     Farmer farmerService
     Fight fightService
     Forum forumService
+    Function functionService
+    Hat hatService
     Weapon weaponService
 }
 
@@ -54,6 +56,8 @@ func NewApi() ApiLeek {
                 Farmer: farmerService{apiService{client: &leekCli, url: apiUrl + "farmer/"}},
                 Fight: fightService{apiService{client: &leekCli, url: apiUrl + "fight/"}},
                 Forum: forumService{apiService{client: &leekCli, url: apiUrl + "forum/"}},
+                Function: functionService{apiService{client: &leekCli, url: apiUrl + "function/"}},
+                Hat: hatService{apiService{client: &leekCli, url: apiUrl + "hat/"}},
                 Weapon: weaponService{apiService{client: &leekCli, url: apiUrl + "weapon/"}},
            }
 
