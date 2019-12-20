@@ -20,6 +20,7 @@ type ApiLeek struct {
     Forum forumService
     Function functionService
     Hat hatService
+    History historyService
     Weapon weaponService
 }
 
@@ -58,6 +59,7 @@ func NewApi() ApiLeek {
                 Forum: forumService{apiService{client: &leekCli, url: apiUrl + "forum/"}},
                 Function: functionService{apiService{client: &leekCli, url: apiUrl + "function/"}},
                 Hat: hatService{apiService{client: &leekCli, url: apiUrl + "hat/"}},
+                History: historyService{apiService{client: &leekCli, url: apiUrl + "history/"}},
                 Weapon: weaponService{apiService{client: &leekCli, url: apiUrl + "weapon/"}},
            }
 
