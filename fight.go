@@ -90,7 +90,7 @@ type leek3 struct {
     Talent uint `json:"talent`
     TalentGain int `json:"talent_gain"`
     Tb uint `json:"tb"`
-    Td uint `json:"td"`
+    Td int `json:"td"`
     Xp uint `json:"xp"`
 }
 
