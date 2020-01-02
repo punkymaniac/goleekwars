@@ -21,6 +21,7 @@ type ApiLeek struct {
     Function functionService
     Hat hatService
     History historyService
+    Lang langService
     Weapon weaponService
 }
 
@@ -60,6 +61,7 @@ func NewApi() ApiLeek {
                 Function: functionService{apiService{client: &leekCli, url: apiUrl + "function/"}},
                 Hat: hatService{apiService{client: &leekCli, url: apiUrl + "hat/"}},
                 History: historyService{apiService{client: &leekCli, url: apiUrl + "history/"}},
+                Lang: langService{apiService{client: &leekCli, url: apiUrl + "lang/"}},
                 Weapon: weaponService{apiService{client: &leekCli, url: apiUrl + "weapon/"}},
            }
 
