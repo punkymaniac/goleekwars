@@ -28,6 +28,7 @@ type ApiLeek struct {
 type apiClient interface {
     ApiRequest(string, string, *string) (*http.Response, string, error)
     SetToken(string)
+    SetSession(string)
 }
 
 type apiService struct {
@@ -38,15 +39,30 @@ type apiService struct {
 type leekClient struct {
     httpcli *http.Client
     token *string
+    session *string
 }
 
 // Create a new ApiLeek object
 func NewApi() ApiLeek {
     apiUrl := "https://leekwars.com/api/"
+
     leekCli := leekClient{
                    httpcli: &http.Client{Timeout: 10 * time.Second},
                    token: nil,
+                   session: nil,
                }
+
+    // Get and keep the session id, if exist
+    resp, _, _ := leekCli.ApiRequest("POST", apiUrl, nil)
+    if resp != nil {
+        for _, cookie := range resp.Cookies() {
+            if cookie.Name == "PHPSESSID" {
+                leekCli.SetSession(cookie.Value)
+                break
+            }
+        }
+    }
+
     api := ApiLeek{
                 client: &leekCli,
                 Ai: aiService{apiService{client: &leekCli, url: apiUrl + "ai/"}},
@@ -104,6 +120,11 @@ func (c *leekClient) ApiRequest(
         req.Header.Set("Authorization", "Bearer " + *c.token)
     }
 
+    // Use the saved session
+    if c.session != nil {
+        req.AddCookie(&http.Cookie{Name: "PHPSESSID", Value: *c.session})
+    }
+
     resp, err := c.httpcli.Do(req)
     if err != nil {
         return nil, "", err
@@ -123,6 +144,13 @@ func (c *leekClient) SetToken(
     token string, // Token used to auth with the api
 ) {
     c.token = &token
+}
+
+// Set the session id
+func (c *leekClient) SetSession(
+    session string, // Current session id
+) {
+    c.session = &session
 }
 
 // Auth to the api
