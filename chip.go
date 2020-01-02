@@ -30,6 +30,11 @@ type ChipTemplate struct {
     Item uint `json:"item"`
 }
 
+type chipRef struct {
+    Template uint `json:"template"`
+    Id uint `json:"id"`
+}
+
 type effect struct {
     Id uint `json:"id"`
     Value1 float32 `json:"value1"`

@@ -27,6 +27,11 @@ type WeaponTemplate struct {
     Item uint `json:"item"`
 }
 
+type weaponRef struct {
+    Template uint `json:"template"`
+    Id uint `json:"id"`
+}
+
 type weaponList struct {
     Weapons map[string]Weapon `json:"weapons"`
 }

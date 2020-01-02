@@ -19,6 +19,7 @@ type ApiLeek struct {
     Fight fightService
     Forum forumService
     Function functionService
+    Garden gardenService
     Hat hatService
     History historyService
     Lang langService
@@ -75,6 +76,7 @@ func NewApi() ApiLeek {
                 Fight: fightService{apiService{client: &leekCli, url: apiUrl + "fight/"}},
                 Forum: forumService{apiService{client: &leekCli, url: apiUrl + "forum/"}},
                 Function: functionService{apiService{client: &leekCli, url: apiUrl + "function/"}},
+                Garden: gardenService{apiService{client: &leekCli, url: apiUrl + "garden/"}},
                 Hat: hatService{apiService{client: &leekCli, url: apiUrl + "hat/"}},
                 History: historyService{apiService{client: &leekCli, url: apiUrl + "history/"}},
                 Lang: langService{apiService{client: &leekCli, url: apiUrl + "lang/"}},
