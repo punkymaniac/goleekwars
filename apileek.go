@@ -24,6 +24,7 @@ type ApiLeek struct {
     History historyService
     Lang langService
     Leekwars leekwarsService
+    Market marketService
     Weapon weaponService
 }
 
@@ -82,6 +83,7 @@ func NewApi() ApiLeek {
                 History: historyService{apiService{client: &leekCli, url: apiUrl + "history/"}},
                 Lang: langService{apiService{client: &leekCli, url: apiUrl + "lang/"}},
                 Leekwars: leekwarsService{apiService{client: &leekCli, url: apiUrl + "leek-wars/"}},
+                Market: marketService{apiService{client: &leekCli, url: apiUrl + "market/"}},
                 Weapon: weaponService{apiService{client: &leekCli, url: apiUrl + "weapon/"}},
            }
 
