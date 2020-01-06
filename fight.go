@@ -16,7 +16,7 @@ type Fight struct {
     Type uint `json:"type"`
     Context uint `json:"context"`
     Status uint `json:"status"`
-    Winner uint `json:"winner"`
+    Winner int `json:"winner"`
     Leeks1 []leek1 `json:"leeks1"`
     Leeks2 []leek1 `json:"leeks2"`
     Farmers1 map[string]farmer1 `json:"farmers1"`
