@@ -8,7 +8,6 @@ type hatService struct {
     apiService
 }
 
-
 type Hat struct {
     Id uint `json:"id"`
     Name string `json:"name"`
