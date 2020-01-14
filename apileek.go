@@ -23,6 +23,7 @@ type ApiLeek struct {
     Hat hatService
     History historyService
     Lang langService
+    Leek leekService
     Leekwars leekwarsService
     Market marketService
     Weapon weaponService
@@ -82,6 +83,7 @@ func NewApi() ApiLeek {
                 Hat: hatService{apiService{client: &leekCli, url: apiUrl + "hat/"}},
                 History: historyService{apiService{client: &leekCli, url: apiUrl + "history/"}},
                 Lang: langService{apiService{client: &leekCli, url: apiUrl + "lang/"}},
+                Leek: leekService{apiService{client: &leekCli, url: apiUrl + "leek/"}},
                 Leekwars: leekwarsService{apiService{client: &leekCli, url: apiUrl + "leek-wars/"}},
                 Market: marketService{apiService{client: &leekCli, url: apiUrl + "market/"}},
                 Weapon: weaponService{apiService{client: &leekCli, url: apiUrl + "weapon/"}},

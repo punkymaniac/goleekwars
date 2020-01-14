@@ -28,8 +28,8 @@ type Fight struct {
     Report struct {
         Bonus uint `json:"bonus"`
         Duration uint `json:"duration"`
-        Leeks1 []leek3 `json:"leeks1"`
-        Leeks2 []leek3 `json:"leeks2"`
+        Leeks1 []Leek3 `json:"leeks1"`
+        Leeks2 []Leek3 `json:"leeks2"`
         Win uint `json:"win"`
     } `json:"report"`
     Comments []string `json:"comments"`
@@ -77,7 +77,7 @@ type leek2 struct {
     Type uint `json:"type"`
 }
 
-type leek3 struct {
+type Leek3 struct {
     Apperance uint `json:"apperance"`
     CurXp uint `json:"cur_xp"`
     Dead bool `json:"dead"`
